@@ -41,7 +41,7 @@ router.post("/signup", async (req, res) => {
       password: req.body.password
     });
 
-    const token = jwt.sign({ id: cUser._id, username: cUser.username }, JWT_SECRET);
+    const token = jwt.sign({ userId: cUser._id, username: cUser.username }, JWT_SECRET);
 
     return res.status(200).json({
       msg: "User created Successfully.",
@@ -79,7 +79,7 @@ router.post("/signin", async (req, res) => {
     });
   }
 
-  const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET);
+  const token = jwt.sign({ userId: user._id, username: user.username }, JWT_SECRET);
 
   return res.status(200).json({
     token: token
